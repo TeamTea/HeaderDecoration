@@ -1,0 +1,3 @@
+include ':headerlibrary'
+include ':app'
+rootProject.name = "HeaderSample"
