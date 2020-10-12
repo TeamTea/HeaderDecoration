@@ -4,7 +4,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 
-public class HeaderViewHolder<T> extends CustomHeaderViewHolder<T> {
+public class HeaderViewHolder extends CustomHeaderViewHolder {
 
 
     public HeaderViewHolder(@NonNull View itemView) {

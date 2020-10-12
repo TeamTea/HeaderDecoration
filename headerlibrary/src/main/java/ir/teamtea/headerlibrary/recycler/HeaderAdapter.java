@@ -9,7 +9,7 @@ import java.util.List;
 
 public abstract class HeaderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    public abstract List getRecyclerItems();
+    public abstract boolean checkIsHeader(int position);
 
     @NonNull
     @Override

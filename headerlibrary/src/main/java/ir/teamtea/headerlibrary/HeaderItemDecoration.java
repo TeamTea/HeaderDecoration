@@ -234,10 +234,7 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration {
             return false;
         } else {
             HeaderAdapter headerAdapter = (HeaderAdapter) parent.getAdapter();
-            if (position >= headerAdapter.getRecyclerItems().size() || position < 0) {
-                return false;
-            }
-            return headerAdapter.getRecyclerItems().get(position) instanceof HeaderRecyclerData;
+            return headerAdapter.checkIsHeader(position);
         }
     }
 
