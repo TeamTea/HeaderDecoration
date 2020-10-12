@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">HeaderSample</string>
+    <string name="default_value">default Value</string>
+    <string name="separator_default_value">separator default value</string>
+    <string name="loading">loading…</string>
 </resources>
