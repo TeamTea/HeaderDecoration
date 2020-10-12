@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import ir.teamtea.headerlibrary.recycler.HeaderAdapter;
-import ir.teamtea.headerlibrary.recycler.HeaderRecyclerData;
+import ir.teamtea.headerlibrary.recycler.HeaderListAdapter;
 import ir.teamtea.headerlibrary.recycler.HeaderViewHolder;
 import kotlin.Pair;
 
@@ -81,7 +81,7 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration {
         super.onDrawOver(c, parent, state);
         int topChildPosition = -1;
         int contactPoint = -1;
-        //val topChild = parent.getChildAt(0) ?: return
+
         View topChild = parent.findChildViewUnder(
                 parent.getPaddingLeft(),
                 parent.getPaddingTop() /*+ (currentHeader?.second?.itemView?.height ?: 0 )*/
@@ -230,10 +230,13 @@ public class HeaderItemDecoration extends RecyclerView.ItemDecoration {
     }
 
     private boolean isHeader(int position) {
-        if (!(parent.getAdapter() instanceof HeaderAdapter)) {
+        if (!(parent.getAdapter() instanceof HeaderAdapter) && !(parent.getAdapter() instanceof HeaderListAdapter)) {
             return false;
-        } else {
+        } else if ((parent.getAdapter() instanceof HeaderAdapter)) {
             HeaderAdapter headerAdapter = (HeaderAdapter) parent.getAdapter();
+            return headerAdapter.checkIsHeader(position);
+        } else {
+            HeaderListAdapter headerAdapter = (HeaderListAdapter) parent.getAdapter();
             return headerAdapter.checkIsHeader(position);
         }
     }
