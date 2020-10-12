@@ -2,12 +2,12 @@ package ir.teamtea.headersample.ui
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import ir.teamtea.headerlibrary.recycler.HeaderListAdapter
 import ir.teamtea.headersample.R
 import ir.teamtea.headersample.model.UiItems
 
-class ItemsAdapter : ListAdapter<UiItems,RecyclerView.ViewHolder>(UiItems_COMPARATOR) {
+class ItemsAdapter : HeaderListAdapter<UiItems, RecyclerView.ViewHolder>(UiItems_COMPARATOR) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -27,9 +27,9 @@ class ItemsAdapter : ListAdapter<UiItems,RecyclerView.ViewHolder>(UiItems_COMPAR
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val uiItem : UiItems = getItem(position)
+        val uiItem: UiItems = getItem(position)
         uiItem.let {
-            when(it){
+            when (it) {
                 is UiItems.XItems -> (holder as XItemViewHolder).bind(it.item)
                 is UiItems.XSeparator -> (holder as XSeparatorViewHolder).bind(it.text)
             }
@@ -48,6 +48,13 @@ class ItemsAdapter : ListAdapter<UiItems,RecyclerView.ViewHolder>(UiItems_COMPAR
 
             override fun areContentsTheSame(oldItem: UiItems, newItem: UiItems): Boolean =
                     oldItem == newItem
+        }
+    }
+
+    override fun checkIsHeader(position: Int): Boolean {
+        return when (getItem(position)) {
+            is UiItems.XSeparator -> true
+            is UiItems.XItems -> false
         }
     }
 

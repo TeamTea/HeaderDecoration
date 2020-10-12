@@ -2,7 +2,7 @@ package ir.teamtea.headersample.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import ir.teamtea.headersample.R
+import ir.teamtea.headerlibrary.HeaderItemDecoration
 import ir.teamtea.headersample.data.FakeData
 import ir.teamtea.headersample.databinding.ActivityMainBinding
 
@@ -29,5 +29,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun initAdapter() {
         binding.list.adapter = adapter
+        binding.list.addItemDecoration(HeaderItemDecoration(binding.list, false))
     }
 }
