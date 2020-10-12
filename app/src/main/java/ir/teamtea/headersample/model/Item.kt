@@ -1,3 +1,3 @@
 package ir.teamtea.headersample.model
 
-data class Item(var title : String)
+data class Item(var title: String)

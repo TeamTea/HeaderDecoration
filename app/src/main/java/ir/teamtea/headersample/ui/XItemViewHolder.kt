@@ -8,21 +8,21 @@ import androidx.recyclerview.widget.RecyclerView
 import ir.teamtea.headersample.R
 import ir.teamtea.headersample.model.Item
 
-class XItemViewHolder(view: View) : RecyclerView.ViewHolder(view){
-    private val title : TextView = view.findViewById(R.id.item_value)
+class XItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    private val title: TextView = view.findViewById(R.id.item_value)
 
     private var xItem: Item? = null
 
-    fun bind(item : Item?){
-        if (item == null){
+    fun bind(item: Item?) {
+        if (item == null) {
             val resources = itemView.resources
             title.text = resources.getString(R.string.loading)
-        }else{
+        } else {
             showXItemData(item)
         }
     }
 
-    private fun showXItemData(xItem: Item){
+    private fun showXItemData(xItem: Item) {
         this.xItem = xItem
         title.text = xItem.title
     }
